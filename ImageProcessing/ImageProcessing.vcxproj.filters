@@ -16,6 +16,12 @@
     <Filter Include="Image Processing Files">
       <UniqueIdentifier>{f6c6d661-67b9-4077-852d-a6e4f6029939}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Image Processing Files\Action Files">
+      <UniqueIdentifier>{e6ce889d-f13d-4bad-bf92-d2110e055653}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image Processing Files\Action Files\Filter Files">
+      <UniqueIdentifier>{0251c27e-a3eb-4905-87f5-dc4fd19f4ce6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UIDlg.h">
@@ -60,20 +66,23 @@
     <ClInclude Include="UIManager.h">
       <Filter>UI Files</Filter>
     </ClInclude>
-    <ClInclude Include="IjsImage.h">
-      <Filter>Image Processing Files</Filter>
-    </ClInclude>
     <ClInclude Include="IjsFilterBlur.h">
-      <Filter>Image Processing Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IjsActionBase.h">
-      <Filter>Image Processing Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IjsActionLinearFilter.h">
-      <Filter>Image Processing Files</Filter>
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
     </ClInclude>
     <ClInclude Include="IjsFilterSharpen.h">
-      <Filter>Image Processing Files</Filter>
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IJSFilterThresholding.h">
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IjsActionBase.h">
+      <Filter>Image Processing Files\Action Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IjsActionLinearFilter.h">
+      <Filter>Image Processing Files\Action Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IjsImage.h">
+      <Filter>Image Processing Files\Action Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -98,20 +107,23 @@
     <ClCompile Include="UIManager.cpp">
       <Filter>UI Files</Filter>
     </ClCompile>
-    <ClCompile Include="IjsImage.cpp">
-      <Filter>Image Processing Files</Filter>
-    </ClCompile>
     <ClCompile Include="IjsFilterBlur.cpp">
-      <Filter>Image Processing Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IjsActionBase.cpp">
-      <Filter>Image Processing Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IjsActionLinearFilter.cpp">
-      <Filter>Image Processing Files</Filter>
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
     </ClCompile>
     <ClCompile Include="IjsFilterSharpen.cpp">
-      <Filter>Image Processing Files</Filter>
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IJSFilterThresholding.cpp">
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsActionBase.cpp">
+      <Filter>Image Processing Files\Action Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsActionLinearFilter.cpp">
+      <Filter>Image Processing Files\Action Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsImage.cpp">
+      <Filter>Image Processing Files\Action Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

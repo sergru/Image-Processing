@@ -5,6 +5,7 @@
 #include "IjsActionBase.h"
 #include "IjsFilterBlur.h"
 #include "IjsFilterSharpen.h"
+#include "IjsFilterThresholding.h"
 
 // ====================================================================================================================
 CIPManager::CIPManager() :
@@ -338,9 +339,11 @@ void CIPManager::RunAction()
     return;
   }
 
-  CIjsFilterBlur    ijsFilterBlur;
-  CIjsFilterSharpen ijsFilterSharpen;
+  CIjsFilterBlur          ijsFilterBlur;
+  CIjsFilterSharpen       ijsFilterSharpen;
+  CIJSFilterThresholding  ijsFilterThresholding;
 
+  HRESULT hr = S_OK;
   CIjsActionBase* pBaseAction;
   switch (SUPPORTED_ACTIONS[foundIx].id)
   {
@@ -355,23 +358,35 @@ void CIPManager::RunAction()
     ijsFilterSharpen.SetOutputFile(m_strOutputFile);
     pBaseAction = &ijsFilterSharpen;
     break;
+
+  case ACTIONS_ID_THRESHOLD:
+    ijsFilterThresholding.SetInputFile(m_strInputFile);
+    ijsFilterThresholding.SetOutputFile(m_strOutputFile);
+    pBaseAction = &ijsFilterThresholding;
+    break;
+
+  default:
+    SendMessageToUI(_T("ERROR: Unknown filter selected"));
+    hr = E_NOTIMPL;
   }
 
-  HRESULT hr = pBaseAction->ExecuteAction();
+  if (SUCCEEDED(hr))
+  {
+    hr = pBaseAction->ExecuteAction();
 
-  if (FAILED(hr))
-  {
-    SendMessageToUI(_T("ERROR: Action failed"));
-  }
-  else
-  {
-    SendMessageToUI(_T("Action done"));
+    if (SUCCEEDED(hr))
+    {
+      SendMessageToUI(_T("Action done"));
+    }
+    else
+    {
+      SendMessageToUI(_T("ERROR: Action failed"));
+    }
   }
 
   if (m_psbActionRunning != NULL)
   {
     m_psbActionRunning = false;
   }
-  
   m_pUIInterface->UIInterface_ActionDone();
 }

@@ -43,9 +43,9 @@ HRESULT CIjsActionBase::ExecuteAction()
   ULONG lastY;
   GetIterationLimits(firstX, lastX, firstY, lastY);
 
-  for (ULONG x = firstX; x < lastX; x++)
+  for (ULONG y = firstY; y < lastY; y++)
   {
-    for (ULONG y = firstY; y < lastY; y++)
+    for (ULONG x = firstX; x < lastX; x++)
     {
       DoAction(x, y);
     }
