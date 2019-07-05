@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Windows Files">
+      <UniqueIdentifier>{743010f8-ca31-42c0-9e05-fe39248ccfdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Files\Resource Files">
+      <UniqueIdentifier>{fc9042cc-d172-4f01-8e28-8cf77f118bf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common Files">
+      <UniqueIdentifier>{5fd11d6a-c36a-4e75-8805-297c8721e32f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Files">
+      <UniqueIdentifier>{abcf8778-e793-4b18-a879-b7a1c754e4c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image Processing Files">
+      <UniqueIdentifier>{f6c6d661-67b9-4077-852d-a6e4f6029939}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UIDlg.h">
+      <Filter>UI Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Windows Files\Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Windows Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Windows Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonDefs.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing.h">
+      <Filter>UI Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIInfoPrinter.h">
+      <Filter>UI Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IPInterface.h">
+      <Filter>Image Processing Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IPManager.h">
+      <Filter>Image Processing Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadBase.h">
+      <Filter>Image Processing Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadBaseDefs.h">
+      <Filter>Image Processing Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIInterface.h">
+      <Filter>UI Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SmartPtr.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>UI Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IjsImage.h">
+      <Filter>Image Processing Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IjsFilterBlur.h">
+      <Filter>Image Processing Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IjsActionBase.h">
+      <Filter>Image Processing Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IjsActionLinearFilter.h">
+      <Filter>Image Processing Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UIDlg.cpp">
+      <Filter>UI Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Windows Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageProcessing.cpp">
+      <Filter>UI Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIInfoPrinter.cpp">
+      <Filter>UI Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IPManager.cpp">
+      <Filter>Image Processing Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadBase.cpp">
+      <Filter>Image Processing Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>UI Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsImage.cpp">
+      <Filter>Image Processing Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsFilterBlur.cpp">
+      <Filter>Image Processing Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsActionBase.cpp">
+      <Filter>Image Processing Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsActionLinearFilter.cpp">
+      <Filter>Image Processing Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\ImageProcessing.ico">
+      <Filter>Windows Files\Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ImageProcessing.rc">
+      <Filter>Windows Files\Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\ImageProcessing.rc2">
+      <Filter>Windows Files\Resource Files</Filter>
+    </None>
+    <None Include="..\.gitignore" />
+    <None Include="..\README.md" />
+  </ItemGroup>
+</Project>
