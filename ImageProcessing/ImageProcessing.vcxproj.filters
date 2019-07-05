@@ -51,12 +51,6 @@
     <ClInclude Include="IPManager.h">
       <Filter>Image Processing Files</Filter>
     </ClInclude>
-    <ClInclude Include="ThreadBase.h">
-      <Filter>Image Processing Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ThreadBaseDefs.h">
-      <Filter>Image Processing Files</Filter>
-    </ClInclude>
     <ClInclude Include="UIInterface.h">
       <Filter>UI Files</Filter>
     </ClInclude>
@@ -78,9 +72,6 @@
     <ClInclude Include="IjsActionBase.h">
       <Filter>Image Processing Files\Action Files</Filter>
     </ClInclude>
-    <ClInclude Include="IjsActionLinearFilter.h">
-      <Filter>Image Processing Files\Action Files</Filter>
-    </ClInclude>
     <ClInclude Include="IjsImage.h">
       <Filter>Image Processing Files\Action Files</Filter>
     </ClInclude>
@@ -88,6 +79,15 @@
       <Filter>Image Processing Files\Action Files\Filter Files</Filter>
     </ClInclude>
     <ClInclude Include="IjsFilterAdditiveNoiseRemoval.h">
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadBase.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadBaseDefs.h">
+      <Filter>Common Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IjsActionLinearFilter.h">
       <Filter>Image Processing Files\Action Files\Filter Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -107,9 +107,6 @@
     <ClCompile Include="IPManager.cpp">
       <Filter>Image Processing Files</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadBase.cpp">
-      <Filter>Image Processing Files</Filter>
-    </ClCompile>
     <ClCompile Include="UIManager.cpp">
       <Filter>UI Files</Filter>
     </ClCompile>
@@ -125,9 +122,6 @@
     <ClCompile Include="IjsActionBase.cpp">
       <Filter>Image Processing Files\Action Files</Filter>
     </ClCompile>
-    <ClCompile Include="IjsActionLinearFilter.cpp">
-      <Filter>Image Processing Files\Action Files</Filter>
-    </ClCompile>
     <ClCompile Include="IjsImage.cpp">
       <Filter>Image Processing Files\Action Files</Filter>
     </ClCompile>
@@ -135,6 +129,12 @@
       <Filter>Image Processing Files\Action Files\Filter Files</Filter>
     </ClCompile>
     <ClCompile Include="IjsFilterAdditiveNoiseRemoval.cpp">
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadBase.cpp">
+      <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsActionLinearFilter.cpp">
       <Filter>Image Processing Files\Action Files\Filter Files</Filter>
     </ClCompile>
   </ItemGroup>
