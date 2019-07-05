@@ -40,7 +40,6 @@ ImageProcessing/dist/
 #Studio files
 .vs/
 
-
-#Debug executiblesfiles
+#Debug executable files
 dist/x64/Debug/
 dist/x86/Debug/

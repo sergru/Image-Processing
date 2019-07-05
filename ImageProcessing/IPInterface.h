@@ -10,6 +10,7 @@
 const enum SUPPORTED_ACTIONS_IDS
 {
   ACTIONS_ID_BLUR = 0,
+  ACTIONS_ID_SHARPEN,
 };
 
 struct ACTION_PAIR
@@ -20,6 +21,7 @@ struct ACTION_PAIR
 static const ACTION_PAIR SUPPORTED_ACTIONS[] =
 {
   {_T("Blur"), ACTIONS_ID_BLUR },
+  {_T("Sharpen"), ACTIONS_ID_SHARPEN },
 };
 
 class IIPInterface abstract

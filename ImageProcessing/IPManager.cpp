@@ -4,6 +4,7 @@
 #include "IjsImage.h"
 #include "IjsActionBase.h"
 #include "IjsFilterBlur.h"
+#include "IjsFilterSharpen.h"
 
 // ====================================================================================================================
 CIPManager::CIPManager() :
@@ -337,7 +338,9 @@ void CIPManager::RunAction()
     return;
   }
 
-  CIjsFilterBlur ijsFilterBlur;
+  CIjsFilterBlur    ijsFilterBlur;
+  CIjsFilterSharpen ijsFilterSharpen;
+
   CIjsActionBase* pBaseAction;
   switch (SUPPORTED_ACTIONS[foundIx].id)
   {
@@ -345,6 +348,12 @@ void CIPManager::RunAction()
     ijsFilterBlur.SetInputFile(m_strInputFile);
     ijsFilterBlur.SetOutputFile(m_strOutputFile);
     pBaseAction = &ijsFilterBlur;
+    break;
+
+  case ACTIONS_ID_SHARPEN:
+    ijsFilterSharpen.SetInputFile(m_strInputFile);
+    ijsFilterSharpen.SetOutputFile(m_strOutputFile);
+    pBaseAction = &ijsFilterSharpen;
     break;
   }
 
