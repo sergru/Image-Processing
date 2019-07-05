@@ -35,12 +35,12 @@
 *.ipdb
 
 #Compiler files
-./ImageProcessing/dist/
+ImageProcessing/dist/
 
 #Studio files
-./.vs/
+.vs/
 
 
 #Debug executiblesfiles
-./dist/x64/Debug/
-./dist/x86/Debug/
+dist/x64/Debug/
+dist/x86/Debug/
