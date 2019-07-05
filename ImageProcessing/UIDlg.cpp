@@ -49,15 +49,12 @@ BEGIN_MESSAGE_MAP(CUIDlg, CDialogEx)
   ON_BN_CLICKED(IDC_BTN_OUTPUT_IMAGE, &CUIDlg::OnBnClickedBtnOutputImage)
   ON_CBN_SELCHANGE(IDC_COMBO_ACTIONS, &CUIDlg::OnCbnSelchangeComboActions)
   ON_BN_CLICKED(IDC_BTN_ACTION_RUN, &CUIDlg::OnBnClickedBtnActionRun)
+  ON_BN_CLICKED(IDC_BTN_CALIBRATION_IMAGE, &CUIDlg::OnBnClickedBtnCalibrationImage)
 END_MESSAGE_MAP()
 
 // ====================================================================================================================
 void CUIDlg::UpdateState()
 {
-  int l1 = m_pInFileCtrl->GetWindowTextLength();
-  int l2 = m_pOutFileCtrl->GetWindowTextLength();
-  int l3 = m_pActionCtrl->GetCurSel();
-
   bool fEnabled = 
     *m_pIPInterface->m_psbActionRunning == true ||
     !m_pInFileCtrl->GetWindowTextLength() ||
@@ -65,8 +62,21 @@ void CUIDlg::UpdateState()
     m_pActionCtrl->GetCurSel() == CB_ERR ?
     false : true;
 
+  if (m_fEnableCalibrationFile)
+  {
+    fEnabled = fEnabled && (m_pCalibFileCtrl->GetWindowTextLength() > 0);
+  }
+
   m_pActionRunCtrl->EnableWindow(fEnabled);
 
+}
+
+
+// ====================================================================================================================
+void CUIDlg::UIManager_ClearCalibrationFile()
+{
+  GetDlgItem(IDC_EDIT_CALIBRATION_FILE)->SetWindowText(_T(""));
+  UpdateState();
 }
 
 // ====================================================================================================================
@@ -171,6 +181,14 @@ BOOL CUIDlg::OnInitDialog()
     m_pOutFileCtrl = (CEdit*)GetDlgItem(IDC_EDIT_OUTPUT_FILE);
     m_pOutFileCtrl->GetWindowRect(&rt);
     m_lOutFileBorderWidth = rt.left + rtd.right - rt.right;
+
+    m_pCalibFileCtrl = (CEdit*)GetDlgItem(IDC_EDIT_CALIBRATION_FILE);
+    m_pCalibFileCtrl->GetWindowRect(&rt);
+    m_lCalibFileBorderWidth = rt.left + rtd.right - rt.right;
+
+    m_fEnableCalibrationFile = false;
+    m_pBtnCalibrationFile = (CButton*)GetDlgItem(IDC_BTN_CALIBRATION_IMAGE);
+    m_pBtnCalibrationFile->EnableWindow(m_fEnableCalibrationFile);
   }
 
   m_pActionCtrl = (CComboBox*)GetDlgItem(IDC_COMBO_ACTIONS);
@@ -240,8 +258,11 @@ void CUIDlg::OnSize(UINT nType, int cx, int cy)
     m_pInFileCtrl->GetWindowRect(&rt);
     m_pInFileCtrl->SetWindowPos(NULL, 0, 0, cx - m_lInFileBorderWidth, rt.Height(), SWP_NOMOVE | SWP_NOZORDER);
 
-    m_pInFileCtrl->GetWindowRect(&rt);
+    m_pOutFileCtrl->GetWindowRect(&rt);
     m_pOutFileCtrl->SetWindowPos(NULL, 0, 0, cx - m_lOutFileBorderWidth, rt.Height(), SWP_NOMOVE | SWP_NOZORDER);
+
+    m_pCalibFileCtrl->GetWindowRect(&rt);
+    m_pCalibFileCtrl->SetWindowPos(NULL, 0, 0, cx - m_lCalibFileBorderWidth, rt.Height(), SWP_NOMOVE | SWP_NOZORDER);
   }
 }
 
@@ -299,11 +320,26 @@ void CUIDlg::OnBnClickedBtnOutputImage()
 }
 
 // ====================================================================================================================
+void CUIDlg::OnBnClickedBtnCalibrationImage()
+{
+  CString strFilePath = ShowFileDialog(TRUE, IDC_EDIT_CALIBRATION_FILE);
+
+  if (strFilePath)
+  {
+    m_pIPInterface->IPInterface_SetCalibrationFile(strFilePath);
+  }
+  UpdateState();
+}
+
+// ====================================================================================================================
 void CUIDlg::OnCbnSelchangeComboActions()
 {
   CString strAction;
   int ix = m_pActionCtrl->GetCurSel();
   strAction = SUPPORTED_ACTIONS[ix].name;
+
+  m_fEnableCalibrationFile = ACTIONS_ID_ADDITIVE_NOISE == SUPPORTED_ACTIONS[ix].id;
+  m_pBtnCalibrationFile->EnableWindow(m_fEnableCalibrationFile);
 
   m_pIPInterface->IPInterface_SetAction(strAction);
   UpdateState();

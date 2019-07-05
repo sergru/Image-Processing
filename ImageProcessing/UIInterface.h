@@ -27,6 +27,7 @@ public:
   typedef CSmartPtr<SInfoOut> CSInfoOutPtr;
 
   virtual void UIInterface_InfoOut(CSInfoOutPtr& pInfoOut) = 0;
+  virtual void UIInterface_CalibrationFileError() = 0;
   virtual void UIInterface_InputFileError() = 0;
   virtual void UIInterface_OutputFileError() = 0;
   virtual void UIInterface_ActionError() = 0;

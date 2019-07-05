@@ -7,6 +7,8 @@
 #include "IjsFilterSharpen.h"
 #include "IjsFilterThresholding.h"
 #include "IjsFilterSaltAndPepperNoiseRemoval.h"
+#include "IjsFilterAdditiveNoiseRemoval.h"
+
 
 // ====================================================================================================================
 CIPManager::CIPManager() :
@@ -17,6 +19,13 @@ CIPManager::CIPManager() :
   m_iAvailabeCores = sysinfo.dwNumberOfProcessors;
 
   m_psbActionRunning = false;
+  
+  // We are not going to handle exceptions here. App just starting.
+  // Just crash it to see what is wrong.
+  if (FAILED(utils::MakeEvent(m_hEventUICalibrationFile)))
+  {
+    throw "Event creation error";
+  }
 
   // We are not going to handle exceptions here. App just starting.
   // Just crash it to see what is wrong.
@@ -52,6 +61,7 @@ CIPManager::~CIPManager()
 {
   ThreadBase_Destroy(true);
 
+  utils::CloseEvent(m_hEventUICalibrationFile);
   utils::CloseEvent(m_hEventUIInputFile);
   utils::CloseEvent(m_hEventUIOutputFile);
   utils::CloseEvent(m_hEventUISetAction);
@@ -63,6 +73,13 @@ CIPManager::~CIPManager()
 void CIPManager::AddUIInterface(IUIInterface* pUIInterface)
 {
   m_pUIInterface = pUIInterface;
+}
+
+// ====================================================================================================================
+void CIPManager::IPInterface_SetCalibrationFile(LPCTSTR pszFile)
+{
+  m_strCalibrationFile = pszFile;
+  SetEvent(m_hEventUICalibrationFile);
 }
 
 // ====================================================================================================================
@@ -104,6 +121,7 @@ DWORD CIPManager::ThreadBase_ThreadFunc(void* pParams)
       m_hEventUIOutputFile,
       m_hEventUISetAction,
       m_hEventUIActionRun,
+      m_hEventUICalibrationFile,
   };
 
   DWORD dwThreadExitCode = EXIT_THREAD_S_OK;
@@ -122,7 +140,7 @@ DWORD CIPManager::ThreadBase_ThreadFunc(void* pParams)
       SetInputFile();
       break;
 
-    case WAIT_OBJECT_0 + 2: //m_hEventUIInputFile
+    case WAIT_OBJECT_0 + 2: //m_hEventUIOutputFile
       SetOutputFile();
       break;
 
@@ -132,6 +150,10 @@ DWORD CIPManager::ThreadBase_ThreadFunc(void* pParams)
 
     case WAIT_OBJECT_0 + 4: //m_hEventUIActionRun
       RunAction();
+      break;
+
+    case WAIT_OBJECT_0 + 5: //m_hEventUICalibrationFile
+      SetCalibrationFile();
       break;
 
     default:
@@ -168,6 +190,48 @@ void CIPManager::SendMessageToUI(LPCTSTR pszText)
 {
   CString strText = pszText;
   SendMessageToUI(strText);
+}
+
+// ====================================================================================================================
+void CIPManager::SetCalibrationFile()
+{
+  CString strText;
+
+  CIjsImage image;
+  HRESULT hr = image.ParseFile(m_strCalibrationFile);
+  switch (hr)
+  {
+  case S_OK:
+    break;
+
+  case E_INVALIDARG:
+    strText = _T("ERROR: Invalid calibration file name");
+    break;
+
+  case E_NOTIMPL:
+    strText = _T("ERROR: Calibration file format is not supported");
+    break;
+
+  case E_ACCESSDENIED:
+    strText = _T("ERROR: Cannot load calibration file");
+    break;
+
+  default:
+    strText = _T("ERROR: Unhandled error");
+    break;
+  }
+
+  if (strText.GetLength() > 0)
+  {
+    // Error. Release the file name and inform UI.
+    m_strCalibrationFile.Empty();
+
+    SendMessageToUI(strText);
+    m_pUIInterface->UIInterface_CalibrationFileError();
+    return;
+  }
+
+  SendMessageToUI(_T("Calibration file accepted"));
 }
 
 // ====================================================================================================================
@@ -344,6 +408,7 @@ void CIPManager::RunAction()
   CIjsFilterSharpen       ijsFilterSharpen;
   CIJSFilterThresholding  ijsFilterThresholding;
   CIjsFilterSaltAndPepperNoiseRemoval ijsSaltAndPepper;
+  CIjsFilterAdditiveNoiseRemoval ijsAdditiveNoise;
 
   HRESULT hr = S_OK;
   CIjsActionBase* pBaseAction;
@@ -371,6 +436,13 @@ void CIPManager::RunAction()
     ijsSaltAndPepper.SetInputFile(m_strInputFile);
     ijsSaltAndPepper.SetOutputFile(m_strOutputFile);
     pBaseAction = &ijsSaltAndPepper;
+    break;
+
+  case ACTIONS_ID_ADDITIVE_NOISE:
+    ijsAdditiveNoise.SetCalibrationFile(m_strCalibrationFile);
+    ijsAdditiveNoise.SetInputFile(m_strInputFile);
+    ijsAdditiveNoise.SetOutputFile(m_strOutputFile);
+    pBaseAction = &ijsAdditiveNoise;
     break;
 
   default:

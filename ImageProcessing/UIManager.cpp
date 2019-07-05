@@ -6,6 +6,7 @@
 // ====================================================================================================================
 CUIManager::CUIManager() :
   m_hEventInfoOut (NULL),
+  m_hEventCalibrationFileError (NULL),
   m_hEventInputFileError (NULL),
   m_hEventOutputFileError (NULL),
   m_hEventActionError (NULL),
@@ -28,6 +29,12 @@ void CUIManager::UIInterface_InfoOut(CSInfoOutPtr& spInfoOut)
   m_rangeSInfoOut.Add(spInfoOut);
   LeaveCriticalSection(&m_csSInfoOut);
   SetEvent(m_hEventInfoOut);
+}
+
+// ====================================================================================================================
+void CUIManager::UIInterface_CalibrationFileError()
+{
+  SetEvent(m_hEventCalibrationFileError);
 }
 
 // ====================================================================================================================
@@ -64,6 +71,11 @@ HRESULT CUIManager::ThreadBase_Create(void* pParams)
 
   if (SUCCEEDED(hr))
   {
+    hr = utils::MakeEvent(m_hEventCalibrationFileError);
+  }
+
+  if (SUCCEEDED(hr))
+  {
     hr = utils::MakeEvent(m_hEventInputFileError);
   }
 
@@ -97,7 +109,11 @@ HRESULT CUIManager::ThreadBase_Destroy(bool fWiatAndTerminate)
   HRESULT hr = super::ThreadBase_Destroy(fWiatAndTerminate);
 
   utils::CloseEvent(m_hEventInfoOut);
+  utils::CloseEvent(m_hEventCalibrationFileError);
   utils::CloseEvent(m_hEventInputFileError);
+  utils::CloseEvent(m_hEventOutputFileError);
+  utils::CloseEvent(m_hEventActionError);
+  utils::CloseEvent(m_hEventActionDone);
   return hr;
 }
 
@@ -114,6 +130,7 @@ DWORD CUIManager::ThreadBase_ThreadFunc(void* pParams)
       m_hEventOutputFileError,
       m_hEventActionError,
       m_hEventActionDone,
+      m_hEventCalibrationFileError,
   };
 
   DWORD dwThreadExitCode = EXIT_THREAD_S_OK;
@@ -165,6 +182,10 @@ DWORD CUIManager::ThreadBase_ThreadFunc(void* pParams)
 
     case WAIT_OBJECT_0 + 5: //m_hEventActionDone
       UIManager_ActionDone();
+      break;
+
+    case WAIT_OBJECT_0 + 6: //m_hEventCalibrationFileError
+      UIManager_ClearCalibrationFile();
       break;
 
     default:

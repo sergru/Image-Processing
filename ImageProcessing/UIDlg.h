@@ -29,6 +29,7 @@ protected: // methods
   void UpdateState();
 
   // CUIManager methods
+  void UIManager_ClearCalibrationFile();
   void UIManager_ClearInputFile();
   void UIManager_ClearOutputFile();
   void UIManager_ClearAction();
@@ -46,6 +47,12 @@ protected: // members
 
   CEdit* m_pOutFileCtrl;
   LONG m_lOutFileBorderWidth;
+
+  CEdit* m_pCalibFileCtrl;
+  LONG m_lCalibFileBorderWidth;
+
+  CButton* m_pBtnCalibrationFile;
+  bool m_fEnableCalibrationFile;
 
   CComboBox* m_pActionCtrl;
 
@@ -69,4 +76,5 @@ public:
   afx_msg void OnBnClickedBtnOutputImage();
   afx_msg void OnCbnSelchangeComboActions();
   afx_msg void OnBnClickedBtnActionRun();
+  afx_msg void OnBnClickedBtnCalibrationImage();
 };

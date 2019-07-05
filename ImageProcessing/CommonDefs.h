@@ -108,10 +108,24 @@ namespace utils
 
   // ====================================================================================================================
   template <typename T>
-  inline static bool IsInArry(const T array[], const T& val) {
+  inline static bool IsInArry(const T array[], const T val) {
     int arraySize = NUMELMS(array);
     for (int i = 0; i < arraySize; ++i) {
       if (array[i] == val) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // ====================================================================================================================
+  template <typename T>
+  inline static bool IsInArry(const T* array, int iElms, const T val)
+  {
+    for (int i = 0; i < iElms; ++i)
+    {
+      if (array[i] == val)
+      {
         return true;
       }
     }

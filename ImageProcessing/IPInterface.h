@@ -13,6 +13,7 @@ const enum SUPPORTED_ACTIONS_IDS
   ACTIONS_ID_SHARPEN,
   ACTIONS_ID_THRESHOLD,
   ACTIONS_ID_SALT_AND_PEPPER,
+  ACTIONS_ID_ADDITIVE_NOISE,
 };
 
 struct ACTION_PAIR
@@ -26,6 +27,7 @@ static const ACTION_PAIR SUPPORTED_ACTIONS[] =
   {_T("Sharpen"), ACTIONS_ID_SHARPEN },
   {_T("Threshold"), ACTIONS_ID_THRESHOLD },
   {_T("Salt & Pepper"), ACTIONS_ID_SALT_AND_PEPPER },
+  {_T("Additive Noise"), ACTIONS_ID_ADDITIVE_NOISE },
 };
 
 class IIPInterface abstract
@@ -38,6 +40,7 @@ public:
   };
   typedef CSmartPtr<SAction> CSActionPtr;
 
+  virtual void IPInterface_SetCalibrationFile(LPCTSTR pszFile) = 0;
   virtual void IPInterface_SetInputFile(LPCTSTR pszFile) = 0;
   virtual void IPInterface_SetOutputFile(LPCTSTR pszFile) = 0;
   virtual void IPInterface_SetAction(LPCTSTR pszAction) = 0;

@@ -17,6 +17,7 @@ public:
 
   void AddUIInterface(IUIInterface* pUIInterface);
 
+  void IPInterface_SetCalibrationFile(LPCTSTR pszFile);
   void IPInterface_SetInputFile(LPCTSTR pszFile);
   void IPInterface_SetOutputFile(LPCTSTR pszFile);
   void IPInterface_SetAction(LPCTSTR pszAction);
@@ -28,6 +29,7 @@ protected:
   void SendMessageToUI(CString& strText);
   void SendMessageToUI(LPCTSTR pszText);
 
+  void SetCalibrationFile();
   void SetInputFile();
   void SetOutputFile();
   void SetActionName();
@@ -37,11 +39,13 @@ protected:
   IUIInterface* m_pUIInterface;
   int           m_iAvailabeCores;
 
+  HANDLE        m_hEventUICalibrationFile;
   HANDLE        m_hEventUIInputFile;
   HANDLE        m_hEventUIOutputFile;
   HANDLE        m_hEventUISetAction;
   HANDLE        m_hEventUIActionRun;
 
+  CString       m_strCalibrationFile;
   CString       m_strInputFile;
   CString       m_strOutputFile;
   CString       m_strAction;

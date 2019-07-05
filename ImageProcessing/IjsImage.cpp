@@ -8,16 +8,17 @@ const TCHAR* SUPPPORTED_IMAGE_TYPES [] =
 {
   _T("PNG"),
   _T("JPG"),
+  _T("TIFF"),
 };
 
 // ====================================================================================================================
-WORD SUPPORTED_BITS[] =
+const WORD SUPPORTED_BITS[] =
 {
   8,
 };
 
 // ====================================================================================================================
-WORD SUPPORTED_PLANES[] =
+const WORD SUPPORTED_PLANES[] =
 {
   1,
 };
@@ -144,17 +145,17 @@ void CIjsImage::SetPixel(ULONG x, ULONG y, BYTE val)
 // ====================================================================================================================
 bool CIjsImage::IsBitsSupported(const BITMAPINFOHEADER& sBmpheader)
 {
-  return utils::IsInArry<WORD>(SUPPORTED_BITS, sBmpheader.biBitCount);
+  return utils::IsInArry<WORD>(SUPPORTED_BITS, sizeof(SUPPORTED_BITS)/sizeof(*SUPPORTED_BITS), sBmpheader.biBitCount);
 }
 
 // ====================================================================================================================
 bool CIjsImage::IsPlanesSupported(const BITMAPINFOHEADER& sBmpheader)
 {
-  return utils::IsInArry<WORD>(SUPPORTED_PLANES, sBmpheader.biPlanes);
+  return utils::IsInArry<WORD>(SUPPORTED_PLANES, sizeof(SUPPORTED_PLANES) / sizeof(*SUPPORTED_PLANES), sBmpheader.biPlanes);
 }
 
 // ====================================================================================================================
 bool CIjsImage::IsSupported(const BITMAPINFO* pBmpInfo)
 {
-  return IsBitsSupported(pBmpInfo->bmiHeader) && IsPlanesSupported(pBmpInfo->bmiHeader);
+  return IsPlanesSupported(pBmpInfo->bmiHeader) && IsBitsSupported(pBmpInfo->bmiHeader);
 }
