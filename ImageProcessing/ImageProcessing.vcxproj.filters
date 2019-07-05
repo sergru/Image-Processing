@@ -84,6 +84,9 @@
     <ClInclude Include="IjsImage.h">
       <Filter>Image Processing Files\Action Files</Filter>
     </ClInclude>
+    <ClInclude Include="IjsFilterSaltAndPepperNoiseRemoval.h">
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UIDlg.cpp">
@@ -124,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="IjsImage.cpp">
       <Filter>Image Processing Files\Action Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IjsFilterSaltAndPepperNoiseRemoval.cpp">
+      <Filter>Image Processing Files\Action Files\Filter Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

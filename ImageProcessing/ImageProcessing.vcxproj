@@ -230,6 +230,7 @@ copy /Y "$(SolutionDir)\ExternalLibs\FreeImage\Dist\x64\FreeImage.dll" "$(Target
     <ClInclude Include="IjsActionBase.h" />
     <ClInclude Include="IjsActionLinearFilter.h" />
     <ClInclude Include="IjsFilterBlur.h" />
+    <ClInclude Include="IjsFilterSaltAndPepperNoiseRemoval.h" />
     <ClInclude Include="IjsFilterSharpen.h" />
     <ClInclude Include="IJSFilterThresholding.h" />
     <ClInclude Include="IjsImage.h" />
@@ -251,6 +252,7 @@ copy /Y "$(SolutionDir)\ExternalLibs\FreeImage\Dist\x64\FreeImage.dll" "$(Target
     <ClCompile Include="IjsActionBase.cpp" />
     <ClCompile Include="IjsActionLinearFilter.cpp" />
     <ClCompile Include="IjsFilterBlur.cpp" />
+    <ClCompile Include="IjsFilterSaltAndPepperNoiseRemoval.cpp" />
     <ClCompile Include="IjsFilterSharpen.cpp" />
     <ClCompile Include="IJSFilterThresholding.cpp" />
     <ClCompile Include="IjsImage.cpp" />

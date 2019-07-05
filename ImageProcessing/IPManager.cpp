@@ -6,6 +6,7 @@
 #include "IjsFilterBlur.h"
 #include "IjsFilterSharpen.h"
 #include "IjsFilterThresholding.h"
+#include "IjsFilterSaltAndPepperNoiseRemoval.h"
 
 // ====================================================================================================================
 CIPManager::CIPManager() :
@@ -342,6 +343,7 @@ void CIPManager::RunAction()
   CIjsFilterBlur          ijsFilterBlur;
   CIjsFilterSharpen       ijsFilterSharpen;
   CIJSFilterThresholding  ijsFilterThresholding;
+  CIjsFilterSaltAndPepperNoiseRemoval ijsSaltAndPepper;
 
   HRESULT hr = S_OK;
   CIjsActionBase* pBaseAction;
@@ -363,6 +365,12 @@ void CIPManager::RunAction()
     ijsFilterThresholding.SetInputFile(m_strInputFile);
     ijsFilterThresholding.SetOutputFile(m_strOutputFile);
     pBaseAction = &ijsFilterThresholding;
+    break;
+
+  case ACTIONS_ID_SALT_AND_PEPPER:
+    ijsSaltAndPepper.SetInputFile(m_strInputFile);
+    ijsSaltAndPepper.SetOutputFile(m_strOutputFile);
+    pBaseAction = &ijsSaltAndPepper;
     break;
 
   default:
