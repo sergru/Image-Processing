@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Project Files">
+      <UniqueIdentifier>{bc853c25-3a19-45ba-be88-f64ba9ced699}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\CommonDefs.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IjsActionBase.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IjsActionLinearFilter.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IjsFilterAdditiveNoiseRemoval.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IjsFilterBlur.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IjsFilterSaltAndPepperNoiseRemoval.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IjsFilterSharpen.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IJSFilterThresholding.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IjsImage.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\ImageProcessing.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IPInterface.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\IPManager.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\resource.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\SmartPtr.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\ThreadBase.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\ThreadBaseDefs.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\UIDlg.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\UIInfoPrinter.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\UIInterface.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageProcessing\UIManager.h">
+      <Filter>Project Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitTest_CIjsFilterAdditiveNoiseRemoval.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IjsActionBase.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IjsActionLinearFilter.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IjsFilterAdditiveNoiseRemoval.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IjsFilterBlur.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IjsFilterSaltAndPepperNoiseRemoval.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IjsFilterSharpen.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IJSFilterThresholding.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IjsImage.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\ImageProcessing.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\IPManager.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\ThreadBase.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\UIDlg.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\UIInfoPrinter.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImageProcessing\UIManager.cpp">
+      <Filter>Project Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

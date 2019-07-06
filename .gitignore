@@ -36,6 +36,8 @@
 
 #Compiler files
 ImageProcessing/dist/
+UnitTests/x64/
+UnitTests/x86/
 
 #Studio files
 .vs/
@@ -43,3 +45,6 @@ ImageProcessing/dist/
 #Debug executable files
 dist/x64/Debug/
 dist/x86/Debug/
+
+#Unit test lib files
+dist/**/UnitTests.*

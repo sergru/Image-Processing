@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageProcessing", "ImageProcessing\ImageProcessing.vcxproj", "{2BC9CBDF-5315-46EF-8EB3-67826955915D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests", "UnitTests\UnitTests.vcxproj", "{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{2BC9CBDF-5315-46EF-8EB3-67826955915D}.Release|x64.Build.0 = Release|x64
 		{2BC9CBDF-5315-46EF-8EB3-67826955915D}.Release|x86.ActiveCfg = Release|Win32
 		{2BC9CBDF-5315-46EF-8EB3-67826955915D}.Release|x86.Build.0 = Release|Win32
+		{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}.Debug|x64.ActiveCfg = Debug|x64
+		{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}.Debug|x64.Build.0 = Debug|x64
+		{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}.Debug|x86.ActiveCfg = Debug|Win32
+		{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}.Debug|x86.Build.0 = Debug|Win32
+		{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}.Release|x64.ActiveCfg = Release|x64
+		{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}.Release|x64.Build.0 = Release|x64
+		{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}.Release|x86.ActiveCfg = Release|Win32
+		{E6A36F1E-609B-425A-BFF0-F7DEA771CFC0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

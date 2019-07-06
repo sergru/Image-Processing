@@ -132,7 +132,7 @@ CString CUIDlg::ShowFileDialog(BOOL isOpenFile, DWORD dwInfoDlgItemId)
     GetDlgItem(dwInfoDlgItemId)->SetWindowText(sFilePath);
     return sFilePath;
   }
-  return NULL;
+  return _T("");
 }
 
 // ====================================================================================================================

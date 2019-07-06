@@ -16,8 +16,9 @@ public:
  virtual ~CIjsImage();
 
  HRESULT Create(ULONG width, ULONG height, ULONG bpp);
- HRESULT Save(FREE_IMAGE_FORMAT, LPCTSTR pszFilePath);
  void Free();
+ bool IsLoaded();
+ HRESULT Save(FREE_IMAGE_FORMAT, LPCTSTR pszFilePath);
 
  // Validate input file and parse it's data.
  HRESULT ParseFile(LPCTSTR pszFilePath);

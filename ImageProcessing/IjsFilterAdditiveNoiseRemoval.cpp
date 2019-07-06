@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "IjsFilterAdditiveNoiseRemoval.h"
 
-const BYTE BASE_NOISE = 128;
-
 // ====================================================================================================================
 CIjsFilterAdditiveNoiseRemoval::CIjsFilterAdditiveNoiseRemoval()
 {
@@ -17,10 +15,20 @@ CIjsFilterAdditiveNoiseRemoval::~CIjsFilterAdditiveNoiseRemoval()
 // ====================================================================================================================
 void CIjsFilterAdditiveNoiseRemoval::GetIterationLimits(ULONG& firstX, ULONG& lastX, ULONG& firstY, ULONG& lastY)
 {
-  firstX = 0;
-  lastX = m_InImage.GetWidth() - 1;
-  firstY = 0;
-  lastY = m_InImage.GetHeight() - 1;
+  if (!m_InImage.IsLoaded())
+  {
+    firstX = -1;
+    lastX = -1;
+    firstY = -1;
+    lastY = -1;
+  }
+  else
+  {
+    firstX = 0;
+    lastX = m_InImage.GetWidth() - 1;
+    firstY = 0;
+    lastY = m_InImage.GetHeight() - 1;
+  }
 }
 
 // ====================================================================================================================
@@ -45,5 +53,5 @@ void CIjsFilterAdditiveNoiseRemoval::DoAction(ULONG x, ULONG y)
 // ====================================================================================================================
 BYTE CIjsFilterAdditiveNoiseRemoval::GetCalibrationValue(ULONG x, ULONG y)
 {
-  return m_bNoiseBase - m_CalibrationImage.GetPixel(x, y);
+  return m_bNoiseBase - (m_CalibrationImage.IsLoaded() ? m_CalibrationImage.GetPixel(x, y) : 0);
 }

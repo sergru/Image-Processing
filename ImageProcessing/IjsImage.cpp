@@ -8,7 +8,6 @@ const TCHAR* SUPPPORTED_IMAGE_TYPES [] =
 {
   _T("PNG"),
   _T("JPG"),
-  _T("TIFF"),
 };
 
 // ====================================================================================================================
@@ -24,7 +23,8 @@ const WORD SUPPORTED_PLANES[] =
 };
 
 // ====================================================================================================================
-CIjsImage::CIjsImage()
+CIjsImage::CIjsImage() :
+  m_bBitmap (NULL)
 {
 }
 
@@ -48,6 +48,13 @@ HRESULT CIjsImage::Create(ULONG width, ULONG height, ULONG bpp)
 void CIjsImage::Free()
 {
   m_fipImage.clear();
+  m_bBitmap = NULL;
+}
+
+// ====================================================================================================================
+bool CIjsImage::IsLoaded()
+{
+  return m_bBitmap != NULL;
 }
 
 // ====================================================================================================================
@@ -133,12 +140,16 @@ ULONG CIjsImage::GetBpp()
 // ====================================================================================================================
 BYTE CIjsImage::GetPixel(ULONG x, ULONG y)
 {
-  return m_bBitmap[x + m_fipImage.getWidth() * y];
+  return m_bBitmap ? m_bBitmap[x + m_fipImage.getWidth() * y] : 0;
 }
 
 // ====================================================================================================================
 void CIjsImage::SetPixel(ULONG x, ULONG y, BYTE val)
 {
+  if (!m_bBitmap)
+  {
+    return;
+  }
   m_bBitmap[x + m_fipImage.getWidth() * y] = val;
 }
 

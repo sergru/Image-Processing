@@ -12,7 +12,7 @@
 #define TEXT_WITH_FILE_AND_LINE(_str)  __FILE__ "(" COMP_STRING(__LINE__) "): " _str
 #define REMIND(str)   message( TEXT_WITH_FILE_AND_LINE(str) )
 
-#ifdef _DEBUG
+#if defined _DEBUG && !defined UNIT_TESTS
 inline void _FancyDassert(bool fOk, char* pszDesc)
 {
   if (!fOk)
